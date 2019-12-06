@@ -2,6 +2,7 @@ package LinkList;
 
 public class LinkListBasic {
     Node head;
+    Node last;
 
     static class Node {
         int data;
@@ -28,15 +29,31 @@ public class LinkListBasic {
         return newNode;
     }
 
+    public void deleteNode(int value) {
+        Node node = head, previous = null;
+        while (node != null) {
+            if (node.data == value) {
+                if (previous == null) {
+                    head = node.next;
+                } else {
+                    previous.next=node.next;
+                }
+
+            }
+            previous=node;
+            node=node.next;
+        }
+    }
+
     public Node addNoteToLast(int data) {
         Node newNode = new Node(data);
         return newNode;
     }
 
-    public void addNodeAfterGivenNode(Node givenNode,int data){
-        Node node=new Node(data);
-        node.next=givenNode.next;
-        givenNode.next=node;
+    public void addNodeAfterGivenNode(Node givenNode, int data) {
+        Node node = new Node(data);
+        node.next = givenNode.next;
+        givenNode.next = node;
     }
 
     public static void main(String[] args) {
@@ -49,7 +66,10 @@ public class LinkListBasic {
         //link among the object
         linkList.head.next = second;
         second.next = third;
-        linkList.addNodeAfterGivenNode(second,100);
+        linkList.addNodeAfterGivenNode(second, 100);
+        linkList.pintList(linkList.head);
+        linkList.deleteNode(100);
+        System.out.println();
         linkList.pintList(linkList.head);
 
     }
