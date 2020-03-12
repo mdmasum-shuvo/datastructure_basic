@@ -1,7 +1,5 @@
 package LinkList;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -28,14 +26,14 @@ public class Solution {
 
     }
 
-    public static void printSinglyLinkedList(SinglyLinkedListNode node, String sep) throws IOException {
+    public static void printSinglyLinkedList(SinglyLinkedListNode node) throws IOException {
         while (node != null) {
             System.out.println(node.data);
 
             node = node.next;
 
             if (node != null) {
-                System.out.println(sep);
+                System.out.println();
             }
         }
     }
@@ -84,7 +82,7 @@ public class Solution {
         }
 
 
-        printSinglyLinkedList(llist.head, "\n");
+        printSinglyLinkedList(llist.head);
         scanner.close();
     }
 }
